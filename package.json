@@ -1,0 +1,62 @@
+{
+  "name": "unkeyed",
+  "version": "0.1.0",
+  "description": "Drop-in Anthropic Messages API client answered by the Claude Code CLI. No API keys.",
+  "keywords": [
+    "anthropic",
+    "claude",
+    "claude-code",
+    "messages-api",
+    "sdk",
+    "drop-in",
+    "cli",
+    "llm",
+    "completion",
+    "tokens",
+    "cost",
+    "no-api-key"
+  ],
+  "license": "MIT",
+  "author": "Timofei Zhovtyi",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./sdk": {
+      "types": "./dist/sdk.d.ts",
+      "default": "./dist/sdk.js"
+    },
+    "./claude": {
+      "types": "./dist/simple/claude.d.ts",
+      "default": "./dist/simple/claude.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test test/*.test.ts",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "@types/node": "^22.15.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@anthropic-ai/sdk": ">=0.60.0"
+  },
+  "peerDependenciesMeta": {
+    "@anthropic-ai/sdk": {
+      "optional": true
+    }
+  }
+}
